@@ -23,6 +23,7 @@ The C++ side computes summary statistics (mean and standard deviation) and estim
 - Cross-language workflow: Python collector output used by a C++ analyzer.
 - Mean and standard deviation calculation from acquired dataset.
 - Tail-area probability estimation with Simpson's Rule and even-step correction.
+- CSV Logging using C++ fstream library for further analysis.
 
 ### Prerequisites
 - Python 3.9+
