@@ -77,7 +77,7 @@ vector<double> collectLatencyData(int count, fstream &file) {
             //print the value that was parsed to the console
             cout << "  -> Parsed as: " << value << endl;
 
-            file << to_string(count) << "," << buffer << "\n";
+            file << to_string(line_count) << "," << buffer << "\n";
         }
         catch (const exception& e) {
             cout << "  -> Could not parse (not a number)" << endl;

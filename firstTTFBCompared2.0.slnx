@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="firstTTFBCompared2.0/firstTTFBCompared2.0.vcxproj" />
+  <Project Path="firstTTFBCompared2.0/firstTTFBCompared2.0.vcxproj" Id="6e265300-36b3-42ff-ac2e-4ba432e22036" />
 </Solution>

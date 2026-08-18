@@ -2,13 +2,14 @@
 #include <iomanip>
 #include<vector>
 #include <fstream>
+#include <string>
 #include "latency_monitor.h"
 using namespace std;
 
 int main() {
-	fstream file("latency_data.txt", ios::out);
+	fstream file("latency_data.csv", ios::out);
 
-    file << "dataPoint,ttfb\n";
+    file << "Data Point,TTFB,Observed Latency,Z-Score,Probability,Percentile\n";
 
     // Project data
     int num_measurements;
@@ -73,6 +74,10 @@ int main() {
     cout << "Calculated Z-score: " << z_score << endl;
     cout << "Probability (Area under tail): " << probability << endl;
     cout << "Percentile: " << (1.0 - probability) * 100 << endl;
+
+    file << ",," << to_string(observed_x) << "," << to_string(z_score) << "," << to_string(probability) << "," << to_string(1 - probability) << "\n";
+
+
 
     file.close();
 
