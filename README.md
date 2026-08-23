@@ -99,17 +99,6 @@ Example:
 110.229044
 ```
 
-### Python parsing example (from a csv)
-
-```python
-for raw in lines:
-    raw = raw.strip()
-    if not raw:
-        continue
-    parts = raw.split(",")
-    ttfb = float(parts[-1])
-```
-
 ## Coming soon
 * Numerical Method Comparisons: Simpson's rule vs Trapezoidal Rule
 * Descriptions of tradeoffs between methods
