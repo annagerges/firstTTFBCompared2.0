@@ -130,13 +130,9 @@ for raw in lines:
 ```
 
 ## Coming soon
-
-* Benchmarking and validation tests
 * Numerical Method Comparisons: Simpon's rule vs Trapezoidal Rule
-* Error Bound verification
 * Descriptions of tradeoffs between methods
 * Testing program on multiple servers
-* Statistical Visualization
 * Measure data pipe overhead
 
 
