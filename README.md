@@ -28,20 +28,18 @@ The C++ side computes summary statistics (mean and standard deviation) and estim
 ### Prerequisites
 - Python 3.9+
 - `pip install requests`
+- `pip install matplotlib`
+- `pip install scipy`
+  
 - C++17-capable compiler
   - Windows: MSVC (`cl`) or MinGW/GCC (`g++`)
   - Linux/macOS: `g++`
 
-### 1) Install Python Requests Library
+
+### Run collector only (Python)
 
 ```bash
-python -m pip install requests
-```
-
-### 2) Run collector only (Python)
-
-```bash
-python module1.py 20
+python module1.py
 ```
 
 Expected output shape (one TTFB value per line):
@@ -53,40 +51,7 @@ TIMEOUT
 101.442307
 ```
 
-### 3) Build analyzer (C++)
-
-#### Windows (MSVC, Developer Command Prompt)
-
-```powershell
-cl /EHsc /std:c++17 "server latency.cpp" latency_monitor.cpp /Fe:ttfb_analyzer.exe
-```
-
-#### Windows (MinGW/GCC)
-
-```powershell
-g++ -std=c++17 -O2 "server latency.cpp" latency_monitor.cpp -o ttfb_analyzer.exe
-```
-
-#### Linux/macOS (g++)
-
-```bash
-g++ -std=c++17 -O2 "server latency.cpp" latency_monitor.cpp -o ttfb_analyzer
-```
-
-> Note: current code includes Windows-specific calls (`_popen`, `_pclose`, `_getcwd`, `<direct.h>`). For native Linux/macOS builds, switch those calls to `popen`, `pclose`, `getcwd` (or build under Windows/WSL with compatible changes).
-
-### 4) Run full pipeline
-
-#### Default integrated flow (analyzer launches Python collector)
-
-```bash
-# Windows
-./ttfb_analyzer.exe
-
-# Linux/macOS
-./ttfb_analyzer
-```
-
+> : Current code includes Windows-specific calls (`_popen`, `_pclose`, `_getcwd`, `<direct.h>`). For native Linux/macOS builds, switch those calls to `popen`, `pclose`, `getcwd` (or build under Windows/WSL with compatible changes).
 
 ### Timeout and target URL workflow
 Current script uses a fixed timeout (`timeout=10`) and URL (`https://www.google.com`) in `module1.py`. Edit those values directly for experiments.
@@ -103,11 +68,27 @@ Current script uses a fixed timeout (`timeout=10`) and URL (`https://www.google.
 - Request timeout + URL: `module1.py` request config.
 - Numerical tolerance behavior: `errorBoundFormula(...)` in `latency_monitor.cpp`.
 
+## Simpson's Rule Error Margins
+I compared the error margins of Simpson's rule with varying subintervals against scipy's quad() integration function for well known integrals (x^2, sin(x), and e^x) and graphed the predicted error (k(b-a)^5)/(180n^4)
+
+#### x^2
+![xSquaredError](xSquaredError.png)
+![xSquaredErrorGraph](xSquaredErrorGraph.png)
+
+#### sin(x)
+![sinXError](sinXError.png)
+![sinXErrorGraph](sinXErrorGraph.png)
+
+#### e^x
+![eXError](eXError.png)
+![eXErrorGraph](eXErrorGraph.png)
+
+
 ## Data Format and Telemetry
 Current collector emits one measurement per line as a numeric value:
 
 ```text
-ttfb-ms
+dataPointNumber-ttfb(ms)
 ```
 
 Example:
@@ -118,7 +99,7 @@ Example:
 110.229044
 ```
 
-### Python parsing example (accept both formats)
+### Python parsing example (from a csv)
 
 ```python
 for raw in lines:
@@ -126,11 +107,11 @@ for raw in lines:
     if not raw:
         continue
     parts = raw.split(",")
-    ttfb = float(parts[-1])  # works for "ttfb" and "timestamp,ttfb"
+    ttfb = float(parts[-1])
 ```
 
 ## Coming soon
-* Numerical Method Comparisons: Simpon's rule vs Trapezoidal Rule
+* Numerical Method Comparisons: Simpson's rule vs Trapezoidal Rule
 * Descriptions of tradeoffs between methods
 * Testing program on multiple servers
 * Measure data pipe overhead
