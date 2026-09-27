@@ -12,7 +12,7 @@
 
 using namespace std;
 
-// The function for the Bell Curve
+// The function for the Bell Curve (probability density function)
 double bellCurveFunction(double x, double mu, double sigma) {
     double exponent = -0.5 * pow((x - mu) / sigma, 2);
     double constant = 1.0 / (sigma * sqrt(2 * M_PI));
@@ -21,6 +21,7 @@ double bellCurveFunction(double x, double mu, double sigma) {
 
 // Finds the n value for Simpson's Method
 int errorBoundFormula(double a, double b, double sigma) {
+    //the maximum value for probability density function
     double k = 3.0 / (sqrt(2 * M_PI) * pow(sigma, 5));
     double n_raw = pow((k * pow(b - a, 5)) / 0.0009, 0.25);
 

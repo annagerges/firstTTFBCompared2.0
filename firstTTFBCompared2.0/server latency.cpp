@@ -9,7 +9,7 @@ using namespace std;
 int main() {
 	fstream file("latency_data.csv", ios::out);
 
-    file << "Data Point,TTFB,Observed Latency,Z-Score,Probability,Percentile\n";
+    file << "Data Point,TTFB\n";
 
     // Project data
     int num_measurements;
@@ -75,7 +75,10 @@ int main() {
     cout << "Probability (Area under tail): " << probability << endl;
     cout << "Percentile: " << (1.0 - probability) * 100 << endl;
 
-    file << ",," << to_string(observed_x) << "," << to_string(z_score) << "," << to_string(probability) << "," << to_string(1 - probability) << "\n";
+    file << "# Observed Latency," << observed_x << "\n";
+    file << "# Z-Score," << z_score << "\n";
+    file << "# Probability," << probability << "\n";
+    file << "# Percentile," << (1.0 - probability) * 100 << "\n";
 
 
 
