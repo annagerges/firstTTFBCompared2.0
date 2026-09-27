@@ -8,6 +8,7 @@
 #include <sstream>
 #include <direct.h>
 #include <algorithm>
+#include <cstdlib>
 #include "latency_monitor.h"
 
 using namespace std;
@@ -34,7 +35,7 @@ int errorBoundFormula(double a, double b, double sigma) {
 }
 
 // Collects latency data by running the Python script
-vector<double> collectLatencyData(int count, fstream &file) {
+vector<double> collectLatencyData(int count, fstream &file, string url) {
     vector<double> data;
 
     // Get absolute current working directory and store it as a c-string so the python script can be executed correctly
@@ -47,7 +48,9 @@ vector<double> collectLatencyData(int count, fstream &file) {
 
     // Path to Python script - using full relative path from executable location
     string script_path = "C:\\AGTR Codes\\firstTTFBCompared2.0\\firstTTFBCompared2.0\\module1.py";
-    string command = "python \"" + script_path + "\" " + to_string(count);
+
+    //gives the python script how many data points the user wants and the url
+    string command = "python \"" + script_path + "\" " + to_string(count) + " \"" + url + "\"";
 
     cout << "Running command: " << command << endl;
 
@@ -78,7 +81,7 @@ vector<double> collectLatencyData(int count, fstream &file) {
             //print the value that was parsed to the console
             cout << "  -> Parsed as: " << value << endl;
 
-            file << to_string(line_count) << "," << buffer << "\n";
+            file << url<<"," << to_string(line_count) << "," << buffer << "\n";
         }
         catch (const exception& e) {
             cout << "  -> Could not parse (not a number)" << endl;

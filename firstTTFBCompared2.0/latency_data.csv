@@ -1,22 +1,73 @@
-Data Point,TTFB,Observed Latency,Z-Score,Probability,Percentile
-1,374.006600
+Url,Data Point,TTFB
+https://www.google.com/,1,243.551400
 
-2,334.415400
+https://www.google.com/,2,223.690300
 
-3,537.770500
+https://www.google.com/,3,212.457300
 
-4,351.360200
+https://www.google.com/,4,233.644700
 
-5,343.973000
+https://www.google.com/,5,221.181700
 
-6,238.683200
+https://www.google.com/,6,237.349800
 
-7,490.550000
+https://www.google.com/,7,228.552500
 
-8,261.795700
+https://www.google.com/,8,204.054900
 
-9,310.072900
+https://www.google.com/,9,214.438900
 
-10,272.143000
+https://www.google.com/,10,206.653700
 
-,,537.770500,2.036573,0.020846,0.979154
+# Observed Latency,243.551
+# Z-Score,1.66765
+# Probability,0.0476921
+# Percentile,95.2308
+https://www.amazon.com/,1,302.621600
+
+https://www.amazon.com/,2,585.030900
+
+https://www.amazon.com/,3,216.154100
+
+https://www.amazon.com/,4,285.375000
+
+https://www.amazon.com/,5,275.248000
+
+https://www.amazon.com/,6,311.879200
+
+https://www.amazon.com/,7,314.056900
+
+https://www.amazon.com/,8,370.756800
+
+https://www.amazon.com/,9,314.456100
+
+https://www.amazon.com/,10,265.652300
+
+# Observed Latency,585.031
+# Z-Score,2.74989
+# Probability,0.00298063
+# Percentile,99.7019
+https://github.com/,1,190.408400
+
+https://github.com/,2,180.050600
+
+https://github.com/,3,183.302800
+
+https://github.com/,4,172.975200
+
+https://github.com/,5,171.944100
+
+https://github.com/,6,181.520400
+
+https://github.com/,7,192.478400
+
+https://github.com/,8,172.278300
+
+https://github.com/,9,194.053800
+
+https://github.com/,10,190.650600
+
+# Observed Latency,194.054
+# Z-Score,1.35044
+# Probability,0.0884373
+# Percentile,91.1563

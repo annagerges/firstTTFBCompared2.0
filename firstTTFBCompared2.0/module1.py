@@ -10,7 +10,7 @@ count = int(sys.argv[1])
 headers = {'User-Agent': 'LatencyProbe/1.0'}
 
 #google http url. Used to make requests for server data
-url="https://www.google.com"
+url=sys.argv[2]
 
 successful_measurements = 0
 
