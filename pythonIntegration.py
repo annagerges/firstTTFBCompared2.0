@@ -152,7 +152,7 @@ else:
 print(f"\nSimpson's Rule Scipy Approximation: {result}")
 print(f"\nScipy Error: {error}")
 
-#have y axis w tickmarks
+#have axes w tickmarks
 plt.ticklabel_format(style='plain', useOffset=False, axis='y')
 plt.title("Number of Subintervals vs Error: Predicted vs Actual Error lines Of Simpson's Rule Integration")
 plt.xlabel("n(subintervals)")
