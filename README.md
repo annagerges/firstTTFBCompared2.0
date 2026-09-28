@@ -1,4 +1,4 @@
-# firstTTFBCompared
+# MaxTTFBCompared
 
 A lightweight collaborative latency-analysis project that measures Time To First Byte (TTFB) with Python and analyzes tail-risk probability in C++ using Simpson's Rule.
 
